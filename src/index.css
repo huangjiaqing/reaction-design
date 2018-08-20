@@ -1,0 +1,14 @@
+
+html, body, :global(#root) {
+  height: 100%;
+  font-size: 12px;
+}
+
+:global .pointer {
+  user-select: none;
+  cursor: pointer;
+}
+
+:global .pointer:hover {
+  color: #1890ff;
+}
