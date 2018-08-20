@@ -32,3 +32,17 @@
 .search {
   width: 20rem;
 }
+
+.content {
+  display: flex;
+  justify-content: center;;
+}
+
+.contentBody {
+  width: 80vw;
+}
+
+.contentRow {
+  width: 100%;
+  margin-top: 2rem;
+}

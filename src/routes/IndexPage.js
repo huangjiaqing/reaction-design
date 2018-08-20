@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Icon, Popover, Tree, Input, Avatar, Badge } from 'antd';
+import { Layout, Icon, Popover, Tree, Input, Avatar, Badge, Card } from 'antd';
 import styles from './IndexPage.css';
 
 const TreeNode = Tree.TreeNode;
@@ -65,7 +65,7 @@ export default class IndexPage extends React.Component {
             >
               <Icon type="bars" className={styles.icon + " pointer"} style={{ marginLeft: '2rem' }} />
             </Popover>
-            <Badge count={5}>
+            <Badge count={0}>
               <Icon type="bell" className={styles.icon + " pointer"} style={{ marginLeft: '2rem' }} />
             </Badge>
           </section>
@@ -73,6 +73,25 @@ export default class IndexPage extends React.Component {
             <Avatar size="small" src="https://striker.teambition.net/thumbnail/110w549744d436e4ce5eb5fd2b938d90e33a/w/200/h/200" className="pointer" />
           </section>
         </Layout.Header>
+        <Layout.Content className={styles.content}>
+          <div className={styles.contentBody}>
+            <div className={styles.contentRow}>
+              <Card title="涌现" bordered={false} extra={<span href="#" className="pointer"><Icon type="edit" /></span>}>
+                暂无内容
+              </Card>
+            </div>
+            <div className={styles.contentRow}>
+              <Card title="情景" bordered={false} extra={<><span className="pointer"><Icon type="code-o" /></span><span className="pointer" style={{ marginLeft: '1rem' }}><Icon type="plus-circle" /></span></>}>
+                暂无内容
+              </Card>
+            </div>
+            <div className={styles.contentRow}>
+              <Card title="原理" bordered={false}>
+                暂无内容
+              </Card>
+            </div>
+          </div>
+        </Layout.Content>
       </Layout>
     );
   }
