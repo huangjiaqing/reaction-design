@@ -94,11 +94,6 @@ export default class IndexPage extends React.Component {
                   暂无内容
                 </Card>
               </div>
-              <div className={styles.contentRow}>
-                <Card title={<><Icon type="share-alt" /><span style={{ marginLeft: '1rem' }}>关联</span></>} bordered={false}>
-                  暂无内容
-                </Card>
-              </div>
             </div>
           </Layout>
         </Layout>
