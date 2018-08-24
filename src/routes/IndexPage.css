@@ -43,13 +43,3 @@
 .sider {
   border-right: 1px solid #e8e8e8
 }
-
-.contentBody {
-  width: 80vw;
-  margin: 0 auto;
-}
-
-.contentRow {
-  width: 100%;
-  margin-top: 2rem;
-}
