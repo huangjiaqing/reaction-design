@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Table, Icon } from 'antd';
-import { Editor } from 'components';
+import { Editor, RichText } from 'components';
+import ReactMarkdown from 'react-markdown';
 import styles from './Content.css';
 
 export default class Content extends React.Component {
@@ -34,6 +35,8 @@ export default class Content extends React.Component {
 
   render() {
 
+    const input = '# This is a header\n\nAnd this is a paragraph'
+
     return (
       <div className={styles.contentBody}>
         <div className={styles.contentRow}>
@@ -44,6 +47,11 @@ export default class Content extends React.Component {
             bordered={false}
           >
             <Editor />
+          </Card>
+        </div>
+        <div className={styles.contentRow}>
+          <Card title={<><Icon type="filter" /><span style={{ marginLeft: '1rem' }}>原理</span></>} bordered={false}>
+            <ReactMarkdown source={input} />
           </Card>
         </div>
         <div className={styles.contentRow}>
@@ -60,12 +68,7 @@ export default class Content extends React.Component {
         </div>
         <div className={styles.contentRow}>
           <Card title={<><Icon type="file-text" /><span style={{ marginLeft: '1rem' }}>描述</span></>} bordered={false} extra={<><span className="pointer" style={{ marginLeft: '1rem' }}>详细</span></>}>
-            暂无内容
-          </Card>
-        </div>
-        <div className={styles.contentRow}>
-          <Card title={<><Icon type="filter" /><span style={{ marginLeft: '1rem' }}>原理</span></>} bordered={false}>
-            暂无内容
+            <RichText />
           </Card>
         </div>
         <div className={styles.contentRow}>
