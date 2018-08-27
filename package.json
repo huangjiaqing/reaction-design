@@ -8,9 +8,13 @@
   },
   "dependencies": {
     "antd": "^3.8.2",
+    "braft-editor": "^1.9.8",
     "dva": "^2.4.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "immutable": "^3.8.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "slate": "^0.40.2",
+    "slate-react": "^0.18.3"
   },
   "devDependencies": {
     "babel-plugin-dva-hmr": "^0.3.2",

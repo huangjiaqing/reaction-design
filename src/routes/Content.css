@@ -1,9 +1,10 @@
 .contentBody {
-  width: 80vw;
+  width: 60vw;
   margin: 0 auto;
+  padding-top: 2rem;
 }
 
 .contentRow {
   width: 100%;
-  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
