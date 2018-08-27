@@ -1,0 +1,7 @@
+:global .RichEditor-root {
+  border: none !important;
+}
+
+:global .note-editor.note-frame {
+  border: none !important;
+}
