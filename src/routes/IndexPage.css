@@ -1,7 +1,5 @@
 .main {
   min-height: 100vh;
-  /* background-color: #fff; */
-  /* background-color: #f5f5f5; */
 }
 
 .header {
@@ -10,8 +8,6 @@
   position: relative;
   display: flex;
   align-items: center;
-  /* padding: 0 2rem; */
-  /* height: 4rem; */
   z-index: 999;
 }
 
@@ -34,11 +30,6 @@
 .search {
   width: 20rem;
 }
-
-/* .content {
-  display: flex;
-  justify-content: center;;
-} */
 
 .sider {
   border-right: 1px solid #e8e8e8
