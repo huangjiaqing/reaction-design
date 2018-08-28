@@ -1,3 +1,3 @@
-import System from './views/System';
+import System from './System';
 
 export default System

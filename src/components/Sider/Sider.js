@@ -18,7 +18,12 @@ const Sider = () => {
           <h1>Reaction Pro</h1>
         </Link>
       </div>
-      <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" style={{ border: 'none' }}>
+      <Menu
+        theme="dark"
+        mode="inline"
+        defaultSelectedKeys={['1']}
+        style={{ border: 'none',  padding: '16px 0', width: '100%' }}
+      >
         <Menu.Item key="1">
           <Icon type="user" />
           <span>组块</span>
