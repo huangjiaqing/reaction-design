@@ -10,6 +10,7 @@ const BasicLayout = ({ children }) => (
     <Sider />
     <Layout style={{ minHeight: '100vh' }}>
       <Header  className={styles.header}/>
+      {children}
     </Layout>
   </Layout>
 );
