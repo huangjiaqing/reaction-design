@@ -9,7 +9,6 @@ const Sider = () => {
   return (
     <Layout.Sider
       collapsible
-      theme="light"
       width={256}
       className={styles.sider}
     >
@@ -19,18 +18,18 @@ const Sider = () => {
           <h1>Reaction Pro</h1>
         </Link>
       </div>
-      <Menu defaultSelectedKeys={['1']} mode="inline" style={{ border: 'none' }}>
+      <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" style={{ border: 'none' }}>
         <Menu.Item key="1">
-          <Icon type="pie-chart" />
-          <span>Option 1</span>
+          <Icon type="user" />
+          <span>组块</span>
         </Menu.Item>
         <Menu.Item key="2">
           <Icon type="desktop" />
-          <span>Option 2</span>
+          <span>复习</span>
         </Menu.Item>
         <Menu.SubMenu
           key="sub1"
-          title={<span><Icon type="user" /><span>User</span></span>}
+          title={<span><Icon type="pie-chart" /><span>分析</span></span>}
         >
           <Menu.Item key="3">Tom</Menu.Item>
           <Menu.Item key="4">Bill</Menu.Item>
@@ -38,14 +37,14 @@ const Sider = () => {
         </Menu.SubMenu>
         <Menu.SubMenu
           key="sub2"
-          title={<span><Icon type="team" /><span>Team</span></span>}
+          title={<span><Icon type="team" /><span>收藏</span></span>}
         >
           <Menu.Item key="6">Team 1</Menu.Item>
           <Menu.Item key="8">Team 2</Menu.Item>
         </Menu.SubMenu>
         <Menu.Item key="9">
           <Icon type="file" />
-          <span>File</span>
+          <span>文档</span>
         </Menu.Item>
       </Menu>
     </Layout.Sider>
