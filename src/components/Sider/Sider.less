@@ -1,0 +1,42 @@
+@import '~antd/lib/style/themes/default.less';
+@ease-in-out-circ: cubic-bezier(0.78, 0.14, 0.15, 0.86);
+
+.logo {
+  height: 64px;
+  position: relative;
+  line-height: 64px;
+  padding-left: (@menu-collapsed-width - 32px) / 2;
+  transition: all 0.3s;
+  background-color: #fff;
+  overflow: hidden;
+  border-bottom: 1px solid #e8e8e8;
+  img {
+    display: inline-block;
+    vertical-align: middle;
+    height: 32px;
+  }
+  h1 {
+    color: #0991D1;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px;
+    margin: 0 0 0 18px;
+    font-family: 'Myriad Pro', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 500;
+  }
+}
+
+.sider {
+  min-height: 100vh;
+  position: relative;
+  z-index: 10;
+  &.ligth {
+    background-color: white;
+    .logo {
+      background: white;
+      h1 {
+        color: #002140;
+      }
+    }
+  }
+}
