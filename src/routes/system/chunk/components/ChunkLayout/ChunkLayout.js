@@ -8,7 +8,11 @@ const ChunkLayout = ({ children }) => {
     <Layout>
       <ChunkBreadCrumb />
       <Layout>
-        <Layout.Sider theme="light" width={256}>
+        <Layout.Sider
+          // collapsible
+          theme="light"
+          width={256}
+        >
           <Menu
             mode="inline"
             defaultSelectedKeys={['1']}
