@@ -12,7 +12,7 @@ const ChunkLayout = ({ children }) => {
           <Menu
             mode="inline"
             defaultSelectedKeys={['1']}
-            style={{ border: 'none', width: '100%' }}
+            style={{ border: 'none', width: '100%', paddingTop: 20 }}
           >
             <Menu.Item key="1">
               <Icon type="user" />
@@ -32,8 +32,8 @@ const ChunkLayout = ({ children }) => {
             </Menu.Item>
           </Menu>
         </Layout.Sider>
-        <Layout>
-          {children}  
+        <Layout style={{ padding: 24 }}>
+          {children}
         </Layout> 
       </Layout>
     </Layout>

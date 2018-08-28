@@ -1,11 +1,12 @@
 import React from 'react';
 import { ChunkLayout } from '../components';
+import Spring from './Spring';
 
 const Chunk = () => {
 
   return (
     <ChunkLayout>
-      {/* 这里是组块 */}
+      <Spring />
     </ChunkLayout>
   );
 };
