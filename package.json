@@ -11,10 +11,9 @@
     "braft-editor": "^1.9.8",
     "dva": "^2.4.0",
     "immutable": "^3.8.2",
+    "normalize.css": "^8.0.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-emotion": "^9.2.6",
-    "react-lz-editor": "^0.12.1",
     "react-markdown": "^3.4.1",
     "slate": "^0.40.2",
     "slate-react": "^0.18.3"

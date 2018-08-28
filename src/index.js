@@ -1,5 +1,6 @@
 import dva from 'dva';
 import './index.css';
+import 'normalize.css';
 
 // 1. Initialize
 const app = dva();
