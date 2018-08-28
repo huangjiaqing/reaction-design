@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Plain from 'slate-plain-serializer'
-import { Editor } from 'slate-react'
+import Plain from 'slate-plain-serializer';
+import { Editor } from 'slate-react';
 
 class PlainText extends Component {
 
@@ -18,7 +18,7 @@ class PlainText extends Component {
   }
 
   onChange = ({ value }) => {
-    this.setState({ value })
+    this.setState({ value });
   }
 
   render() {
@@ -30,8 +30,8 @@ class PlainText extends Component {
         value={this.state.value}
         onChange={this.onChange}
       />
-    )
+    );
   }
 }
 
-export default PlainText
+export default PlainText;
