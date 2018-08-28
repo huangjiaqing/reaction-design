@@ -1,15 +1,12 @@
 import React from 'react';
 import { Layout } from 'antd';
-import { Sider } from 'components';
-import styles from './BasicLayout.css';
-
-const { Header } = Layout;
+import { Sider, GlobalHeader } from 'components';
 
 const BasicLayout = ({ children }) => (
   <Layout style={{ minHeight: '100vh' }}>
     <Sider />
     <Layout style={{ minHeight: '100vh' }}>
-      <Header  className={styles.header}/>
+      <GlobalHeader />
       {children}
     </Layout>
   </Layout>
