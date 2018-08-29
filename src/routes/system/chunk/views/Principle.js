@@ -99,7 +99,7 @@ class Principle extends Component {
               )}
               className={styles.principle}
               key={item.topClass}
-              bodyStyle={item.isEditing ? { padding: 0 } : {}}
+              bodyStyle={item.isEditing ? { padding: 0 } : { overflow: 'auto' }}
             >
               {item.isEditing
               ? (
