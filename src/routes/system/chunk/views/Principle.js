@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Icon, Button, Popconfirm } from 'antd';
+import { Markdown } from 'components';
 import styles from './Principle.less';
 
 class Principle extends Component {
@@ -30,8 +31,10 @@ class Principle extends Component {
 
     const PricipleExtra = (
       <div>
-        <Icon type="edit" className="pointer" style={{ marginRight: '12px' }} />
-        <Icon type="delete" className="pointer" />
+        <Icon type="edit" className="pointer" />
+        {principles.length > 1 && (
+          <Icon type="delete" className="pointer" style={{ marginLeft: '12px' }} />
+        )}
       </div>
     );
 
@@ -45,7 +48,8 @@ class Principle extends Component {
               className={styles.principle}
               key={item.topClass}
             >
-              暂无内容
+              {/* 暂无内容 */}
+              <Markdown />
             </Card>
           )
         )}
