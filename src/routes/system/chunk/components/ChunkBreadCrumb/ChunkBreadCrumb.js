@@ -10,7 +10,6 @@ const ChunkBreadCrumb = () => {
         <Breadcrumb.Item>前端</Breadcrumb.Item>
         <Breadcrumb.Item>构建</Breadcrumb.Item>
         <Breadcrumb.Item>Webpack</Breadcrumb.Item>
-        <Breadcrumb.Item>entry</Breadcrumb.Item>
       </Breadcrumb>
     </Layout.Header>
   );

@@ -40,6 +40,23 @@ class Principle extends Component {
     });
   }
 
+  onDelete = (topClass) => {
+    const _ = produce(this.state.principles, (principles) => {
+      principles.splice(topClass, 1)
+    });
+
+    this.setState({
+      principles: _.map((item, key) => {
+        let _item = {
+          ...item,
+          topClass: key
+        };
+
+        return _item;
+      })
+    });
+  }
+
   onCreate = () => {
     const { principles } = this.state;
     const len = principles.length;
@@ -69,7 +86,14 @@ class Principle extends Component {
                 <div>
                   <Icon type="edit" className="pointer" onClick={() => this.onOpenEditor(item.topClass)} />
                   {principles.length > 1 && (
-                    <Icon type="delete" className="pointer" style={{ marginLeft: '12px' }} />
+                    <Popconfirm
+                      title="确定删除该层级？"
+                      okText="确定"
+                      cancelText="取消"
+                      onConfirm={() => this.onDelete(item.topClass)}
+                    >
+                      <Icon type="delete" className="pointer" style={{ marginLeft: '12px' }} />
+                    </Popconfirm>
                   )}
                 </div>
               )}
@@ -89,7 +113,9 @@ class Principle extends Component {
                 </div>
               )
               : (
-                <div dangerouslySetInnerHTML={{ __html: item.content }} />
+                item.content.length
+                ? <div dangerouslySetInnerHTML={{ __html: item.content }} />
+                : <span style={{ color: '#bfbfbf' }}><Icon type="frown-o" />&nbsp;&nbsp;暂无内容</span>
               )}
             </Card>
           )
