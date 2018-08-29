@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Icon, Button, Popconfirm } from 'antd';
-import { Markdown } from 'components';
+import produce from 'immer';
+import { Editor } from 'components';
 import styles from './Principle.less';
 
 class Principle extends Component {
@@ -10,8 +11,33 @@ class Principle extends Component {
       {
         topClass: 0,
         content: '',
+        isEditing: false,
       },
     ],
+  }
+
+  onOpenEditor = (topClass) => {
+    this.setState({
+      principles: produce(this.state.principles, principles => {
+        principles[topClass].isEditing = true;
+      })
+    });
+  }
+
+  onCloseEditor = (topClass) => {
+    this.setState({
+      principles: produce(this.state.principles, principles => {
+        principles[topClass].isEditing = false;
+      })
+    });
+  }
+
+  onEdit(topClass, content) {
+    this.setState({
+      principles: produce(this.state.principles, principles => {
+        principles[topClass].content = content;
+      })
+    });
   }
 
   onCreate = () => {
@@ -19,24 +45,19 @@ class Principle extends Component {
     const len = principles.length;
 
     this.setState({
-      priciples: principles.push({
-        topClass: len,
-        content: ''
-      })
-    });
+      principles: [
+        ...principles,
+        {
+          topClass: len,
+          content: '',
+          isEditing: false,
+        }
+      ]
+    })
   }
 
   render() {
     const { principles } = this.state;
-
-    const PricipleExtra = (
-      <div>
-        <Icon type="edit" className="pointer" />
-        {principles.length > 1 && (
-          <Icon type="delete" className="pointer" style={{ marginLeft: '12px' }} />
-        )}
-      </div>
-    );
 
     return (
       <div className={styles.main}>
@@ -44,12 +65,32 @@ class Principle extends Component {
           item => (
             <Card
               title={`第${item.topClass}级`}
-              extra={PricipleExtra}
+              extra={(
+                <div>
+                  <Icon type="edit" className="pointer" onClick={() => this.onOpenEditor(item.topClass)} />
+                  {principles.length > 1 && (
+                    <Icon type="delete" className="pointer" style={{ marginLeft: '12px' }} />
+                  )}
+                </div>
+              )}
               className={styles.principle}
               key={item.topClass}
+              bodyStyle={item.isEditing ? { padding: 0 } : {}}
             >
-              {/* 暂无内容 */}
-              <Markdown />
+              {item.isEditing
+              ? (
+                <div>
+                  <Editor value={item.content} onChange={(v) => this.onEdit(item.topClass, v)}/>
+                  <div style={{ textAlign: 'right', padding: 12 }}>
+                    <Button type="primary" onClick={() => this.onCloseEditor(item.topClass)}>
+                      确定
+                    </Button>
+                  </div>
+                </div>
+              )
+              : (
+                <div dangerouslySetInnerHTML={{ __html: item.content }} />
+              )}
             </Card>
           )
         )}

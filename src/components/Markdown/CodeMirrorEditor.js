@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CodeMirror from 'codemirror';
 // import composeClass from 'classnames';
-import './CodeMirrorEditor.css';
 
 class CodeMirrorEditor extends Component {
 
