@@ -46,14 +46,10 @@ class Principle extends Component {
     });
 
     this.setState({
-      principles: _.map((item, key) => {
-        let _item = {
-          ...item,
-          topClass: key
-        };
-
-        return _item;
-      })
+      principles: _.map((item, key) => ({
+        ...item,
+        topClass: key
+      }))
     });
   }
 
