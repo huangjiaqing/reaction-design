@@ -30,7 +30,7 @@ const ChunkLayout = ({ children }) => {
               <Icon type="pie-chart" />
               <span>情景</span>
             </Menu.Item>
-            <Menu.Item key="4">
+            <Menu.Item key="4" disabled>
               <Icon type="team" />
               <span>组块信息</span>
             </Menu.Item>
