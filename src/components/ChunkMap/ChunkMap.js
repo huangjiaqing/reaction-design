@@ -4,77 +4,101 @@ import styles from './ChunkMap.less';
 
 export default class ChunkMap extends Component {
   componentDidMount() {
+    // 注册鼠标进入节点变红的行为
+    G6.registerBehaviour('mouseEnterFillRed', graph=>{
+      graph.behaviourOn('node:mouseenter', ev=>{
+        graph.update(ev.item, {
+          color: 'red'
+        });
+      });
+    });
+
+    // 注册鼠标进入节点变绿的行为
+    G6.registerBehaviour('mouseEnterFillGreen', graph=>{
+      graph.behaviourOn('node:mouseenter', ev=>{
+        graph.update(ev.item, {
+          color: 'green'
+        });
+      });
+    });
+
+    // 注册鼠标移出节点变原色的行为
+    G6.registerBehaviour('mouseLeaveResetFill', graph=>{
+      graph.behaviourOn('node:mouseleave', ev=>{
+        graph.update(ev.item, {
+          color: '#2f54eb'
+        });
+      });
+    });
     const data = {
-      "nodes": [
-        {
-          "shape": "customNode",
-          "id": "node1",
-          "x": 50,
-          "y": 100
-        },
-        {
-          "shape": "customNode",
-          "id": "node2",
-          "x": 250,
-          "y": 100
-        }
-      ],
+      nodes: [{
+        id: '事件',
+        x: 80,
+        y: 150,
+      },{
+        id: '行为',
+        x: 200,
+        y: 150
+      },{
+        id: '模式',
+        x: 320,
+        y: 150
+      }],
+      edges: [{
+        source: '事件',
+        target: '行为',
+        label: '组成'
+      },{
+        source: '行为',
+        target: '模式',
+        label: '组成'
+      }]
     };
-    
-    G6.registerNode('customNode', {
-      draw(item){
-        const group = item.getGraphicGroup();
-        const model = item.getModel();
-        group.addShape('text', {
-          attrs: {
-            x: 0,
-            y: 0,
-            fill: '#333',
-            text: '我是一个自定义节点，\n有下面那个方形和我自己组成'
-          }
-        });
-        group.addShape('text', {
-          attrs: {
-            x: 0,
-            y: 0,
-            fill: '#333',
-            text: ' ('+model.x+', '+model.y+') \n 原点是组的图坐标',
-            textBaseline: 'top'
-          }
-        });
-        group.addShape('circle', {
-          attrs: {
-            x: 0,
-            y: 0,
-            r: 4,
-            fill: 'blue'
-          }
-        });
-        return group.addShape('rect', {
-          attrs: {
-            x: 0,
-            y: 0,
-            width: 100,
-            height: 100,
-            stroke: 'red'
-          }
-        });
+    let mode = 'red';
+    const graph = new G6.Graph({
+      container: 'mountNode',
+      width: 500,
+      height: 500,
+      modes: {
+        red: ['mouseEnterFillRed', 'mouseLeaveResetFill'],
+        green: ['mouseEnterFillGreen', 'mouseLeaveResetFill']
+      },
+      mode,
+    });
+    graph.node({
+      label(model) {
+        return model.id;
       }
     });
-    
-    const graph = new G6.Graph({
-      container: 'mountNode',  // dom 容器 或 容器ID
-      width: 500,              // 画布宽
-      height: 500,             // 画布高
+    graph.edge({
+      style() {
+        return {
+          endArrow: true
+        };
+      }
     });
     graph.read(data);
+
+    // 点击按钮切换模式
+    document.getElementById('changeMode').onclick = () => {
+      if(mode === 'red') {
+        graph.changeMode('green');
+        mode = 'green';
+      } else {
+        graph.changeMode('red');
+        mode = 'red';
+      }
+    };
   }
   
   render() {
 
     return (
+      <>
+      <button id="changeMode">切换模式</button>
       <div id="mountNode" className={styles.main}>
       </div>
+      </>
     );
   }
 };
