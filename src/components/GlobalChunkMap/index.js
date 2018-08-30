@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ChunkMap } from 'components';
 import styles from './index.less';
 
 export default class GlobalChunkMap extends Component {
@@ -16,9 +17,7 @@ export default class GlobalChunkMap extends Component {
     return (
       <div className={styles.globalChunkMap} style={defaultStyle}>
         {visible && (
-          <div>
-            
-          </div>
+          <ChunkMap />
         )}
       </div>
     );
