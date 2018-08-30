@@ -11,7 +11,7 @@ const System = ({
   return (
     <BasicLayout>
       <Chunk />
-      <GlobalChunkMap visible={isOpenGlobalChunkMap}/>}
+      <GlobalChunkMap visible={isOpenGlobalChunkMap} />
     </BasicLayout>
   );
 };
