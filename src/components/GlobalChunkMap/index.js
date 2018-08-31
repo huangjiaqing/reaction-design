@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ChunkMap } from 'components';
+import { Layout } from 'antd';
 import styles from './index.less';
 
 export default class GlobalChunkMap extends Component {
@@ -17,7 +18,9 @@ export default class GlobalChunkMap extends Component {
     return (
       <div className={styles.globalChunkMap} style={defaultStyle}>
         {visible && (
-          <ChunkMap />
+          <Layout style={{ height: '100%', padding: 24 }}>
+            <ChunkMap />
+          </Layout>
         )}
       </div>
     );

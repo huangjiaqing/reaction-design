@@ -11,11 +11,11 @@ const GlobalHeader = ({
   const compassStyle = compassActived
     ? {
       color: '#1890ff',
-      backgroundColor: '#e6f7ff'
+      // backgroundColor: '#e6f7ff'
     }
     : {
       color: '#8c8c8c',
-      backgroundColor: '#fff'
+      // backgroundColor: '#fff'
     };
 
   return (
