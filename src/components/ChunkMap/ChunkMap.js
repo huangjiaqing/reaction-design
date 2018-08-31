@@ -68,7 +68,7 @@ export default class ChunkMap extends Component {
       <div className={styles.controll}>
         <Radio.Group value={currentMap} onChange={this.changeMap}>
           <Radio.Button value="treeMap">树图</Radio.Button>
-          <Radio.Button value="mindMap">脑图</Radio.Button>
+          <Radio.Button value="mindMap" disabled>脑图</Radio.Button>
         </Radio.Group>
         <Search placeholder="搜索组块..." className={styles.search}/>
       </div>

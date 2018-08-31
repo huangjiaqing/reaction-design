@@ -19,18 +19,22 @@ const ChunkLayout = ({ children }) => {
             style={{ border: 'none', width: '100%', paddingTop: 20 }}
           >
             <Menu.Item key="1">
-              <Icon type="user" />
+              <Icon type="info-circle" />
               <span>涌现</span>
             </Menu.Item>
             <Menu.Item key="2">
               <Icon type="desktop" />
-              <span>原理</span>
+              <span>模型</span>
             </Menu.Item>
             <Menu.Item key="3">
-              <Icon type="pie-chart" />
+              <Icon type="solution" />
               <span>情景</span>
             </Menu.Item>
-            <Menu.Item key="4" disabled>
+            <Menu.Item key="4">
+              <Icon type="exception" />
+              <span>调适</span>
+            </Menu.Item>
+            <Menu.Item key="5" disabled>
               <Icon type="team" />
               <span>组块信息</span>
             </Menu.Item>

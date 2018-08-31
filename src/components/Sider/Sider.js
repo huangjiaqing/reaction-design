@@ -26,7 +26,7 @@ const Sider = () => {
         style={{ border: 'none',  padding: '16px 0', width: '100%' }}
       >
         <Menu.Item key="1">
-          <Icon type="user" />
+          <Icon type="appstore" />
           <span>组块</span>
         </Menu.Item>
         <Menu.Item key="2" disabled>

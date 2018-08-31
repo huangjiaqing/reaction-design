@@ -17,6 +17,7 @@
     "highlight": "^0.2.4",
     "immer": "^1.5.0",
     "immutable": "^3.8.2",
+    "lodash-decorators": "^6.0.0",
     "normalize.css": "^8.0.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
