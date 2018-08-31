@@ -25,5 +25,5 @@ html, body, :global(#root) {
 
 :global *::-webkit-scrollbar-thumb{
   height: 20px;
-  background-color: #a6a6a6;
+  background-color: #bfbfbf;
 }

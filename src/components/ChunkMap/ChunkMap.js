@@ -2,10 +2,24 @@ import React, { Component } from 'react';
 import { Layout, Tree, Input, Radio, Select, Button, Icon, Row, Col } from 'antd';
 import MindMap from '../MindMap';
 import styles from './ChunkMap.less';
+import treeData from './data.json';
+console.log(treeData);
 
 const TreeNode = Tree.TreeNode;
 const Search = Input.Search;
 const Option = Select.Option;
+
+const getTreeNode = (data) => {
+  return (
+    Array.isArray(data) && data.map(
+      node => (
+        <TreeNode key={node.name} title={node.name} value={node.name}>
+          {Array.isArray(node.children) && getTreeNode(node.children)}
+        </TreeNode>
+      )
+    )
+  );
+};
 
 export default class ChunkMap extends Component {
   state = {
@@ -17,7 +31,7 @@ export default class ChunkMap extends Component {
       currentMap: e.target.value
     });
   }
-  
+
   render() {
     const { currentMap } = this.state;
 
@@ -44,22 +58,11 @@ export default class ChunkMap extends Component {
       <>
       <Tree
         showLine
-        defaultExpandedKeys={['0-0-0']}
+        draggable
+        // defaultExpandAll
+        onRightClick={e => { console.log('右击啦：', e) }}
       >
-        <TreeNode title="基础" key="0-0">
-          <TreeNode title="JavaScript" key="0-0-0">
-            <TreeNode title="语法" key="0-0-0-0" />
-            <TreeNode title="闭包" key="0-0-0-1" />
-            <TreeNode title="面向对象" key="0-0-0-2" />
-          </TreeNode>
-          <TreeNode title="构建" key="0-0-1">
-            <TreeNode title="Webpack" key="0-0-1-0" />
-          </TreeNode>
-          <TreeNode title="视图" key="0-0-2">
-            <TreeNode title="React" key="0-0-2-0" />
-            <TreeNode title="MDV" key="0-0-2-1" />
-          </TreeNode>
-        </TreeNode>
+        {getTreeNode(treeData)}
       </Tree>
       </>
     );
@@ -80,10 +83,21 @@ export default class ChunkMap extends Component {
           <Col>{title}</Col>
           <Col>{extraControll}</Col>
         </Row>
-        <Row className={styles.map}>
-          {currentMap === 'treeMap' && <TreeMap />}
-          {currentMap === 'mindMap' && <MindMap />}
-        </Row>
+        {currentMap === 'treeMap' && (
+          <seaction className={styles.map}>
+            <div className={styles.left}>
+              <TreeMap />
+            </div>
+            <div className={styles.right}>
+
+            </div>
+          </seaction>
+        )}
+        {currentMap === 'mindMap' && (
+          <Row className={styles.map}>
+            <MindMap />
+          </Row>
+        )}
       </Layout>
     );
   }
