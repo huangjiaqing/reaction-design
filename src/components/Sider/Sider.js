@@ -9,6 +9,7 @@ const Sider = () => {
   return (
     <Layout.Sider
       collapsible
+      defaultCollapsed
       width={256}
       className={styles.sider}
     >

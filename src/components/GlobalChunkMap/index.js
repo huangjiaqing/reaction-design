@@ -18,7 +18,7 @@ export default class GlobalChunkMap extends Component {
     return (
       <div className={styles.globalChunkMap} style={defaultStyle}>
         {visible && (
-          <Layout style={{ height: '100%', padding: 24 }}>
+          <Layout style={{ height: '100%', padding: 24, overflow: 'auto' }}>
             <ChunkMap />
           </Layout>
         )}
