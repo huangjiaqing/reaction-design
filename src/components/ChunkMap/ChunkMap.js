@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Layout, Tree, Input, Radio, Select, Button, Icon, Row, Col } from 'antd';
 import MindMap from '../MindMap';
+import ChunkEditor from './ChunkEditor.js';
 import styles from './ChunkMap.less';
 import treeData from './data.json';
 
@@ -88,7 +89,7 @@ export default class ChunkMap extends Component {
               <TreeMap />
             </div>
             <div className={styles.right}>
-
+              <ChunkEditor />
             </div>
           </section>
         )}
