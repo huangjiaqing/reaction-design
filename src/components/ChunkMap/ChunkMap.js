@@ -3,7 +3,6 @@ import { Layout, Tree, Input, Radio, Select, Button, Icon, Row, Col } from 'antd
 import MindMap from '../MindMap';
 import styles from './ChunkMap.less';
 import treeData from './data.json';
-console.log(treeData);
 
 const TreeNode = Tree.TreeNode;
 const Search = Input.Search;
@@ -84,14 +83,14 @@ export default class ChunkMap extends Component {
           <Col>{extraControll}</Col>
         </Row>
         {currentMap === 'treeMap' && (
-          <seaction className={styles.map}>
+          <section className={styles.map}>
             <div className={styles.left}>
               <TreeMap />
             </div>
             <div className={styles.right}>
 
             </div>
-          </seaction>
+          </section>
         )}
         {currentMap === 'mindMap' && (
           <Row className={styles.map}>
