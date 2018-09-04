@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Layout, Tree, Input, Radio, Select, Button, Icon, Row, Col } from 'antd';
+import { connect } from 'dva';
+import PropTypes from 'prop-types';
 import MindMap from '../MindMap';
 import ChunkEditor from './ChunkEditor.js';
 import styles from './ChunkMap.less';
-import treeData from './data.json';
 
 const TreeNode = Tree.TreeNode;
 const Search = Input.Search;
@@ -21,9 +22,17 @@ const getTreeNode = (data) => {
   );
 };
 
-export default class ChunkMap extends Component {
+class ChunkMap extends Component {
   state = {
     currentMap: 'treeMap', // or mindMap
+  }
+
+  static defaultProps = {
+    data: [],
+  }
+
+  static propTypes = {
+    data: PropTypes.array,
   }
 
   changeMap = (e) => {
@@ -34,7 +43,7 @@ export default class ChunkMap extends Component {
 
   render() {
     const { currentMap } = this.state;
-
+    const { data } = this.props;
 
     const title = (
       <>
@@ -62,7 +71,7 @@ export default class ChunkMap extends Component {
         // defaultExpandAll
         onRightClick={e => { console.log('右击啦：', e) }}
       >
-        {getTreeNode(treeData)}
+        {getTreeNode(data)}
       </Tree>
       </>
     );
@@ -102,3 +111,9 @@ export default class ChunkMap extends Component {
     );
   }
 };
+
+const mapStateToProps = state => ({
+  data: state.map.mapData
+});
+
+export default connect(mapStateToProps)(ChunkMap);
