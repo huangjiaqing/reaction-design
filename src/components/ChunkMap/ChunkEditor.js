@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Radio, Icon, Button, Row, Col, Input, Select } from 'antd';
+import { Card,  Icon, Button, Input, Select } from 'antd';
 import styles from './ChunkEditor.less';
 
 const Option = Select.Option;
