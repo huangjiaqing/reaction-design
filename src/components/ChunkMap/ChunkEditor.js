@@ -1,10 +1,14 @@
 import React from 'react';
 import { Card,  Icon, Button, Input, Select } from 'antd';
+import { connect } from 'dva';
 import styles from './ChunkEditor.less';
 
 const Option = Select.Option;
 
-const ChunkEditor = () => {
+const ChunkEditor = ({
+  data,
+}) => {
+  data = data || {};
 
   const FormMode = ({
     left,
@@ -38,7 +42,7 @@ const ChunkEditor = () => {
       className={styles.chunkMap}
     >
       <FormMode
-        middle={<Input placeholder="请输入组块名..." defaultValue="Webpack" />}
+        middle={<Input placeholder="请输入组块名..." defaultValue={data.name} />}
         right={<Button type="primary">修改</Button>}
       />
       <FormMode
@@ -62,4 +66,8 @@ const ChunkEditor = () => {
   );
 };
 
-export default ChunkEditor;
+const mapStateToProps = state => ({
+  data: state.map.currentNode
+});
+
+export default connect(mapStateToProps)(ChunkEditor);

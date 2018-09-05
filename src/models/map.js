@@ -1,3 +1,5 @@
+import findId from 'utils/findTreeNodeById';
+
 const mapData = [
   {
     id: '1',
@@ -43,14 +45,19 @@ export default {
 
   state: {
     mapData,
-    currentNode: ['1-2'],
+    currentKey: [],
+    currentNode: null
   },
 
   reducers: {
-    updateCurrentNode(state, { payload: currentNode }) {
+    updateCurrentKey(state, { payload: currentKey }) {
+
+      let res = findId(currentKey[0], state.mapData);
+
       return {
         ...state,
-        currentNode
+        currentKey,
+        currentNode: res.pop()
       };
     },
   },

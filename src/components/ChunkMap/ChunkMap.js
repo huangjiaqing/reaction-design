@@ -43,9 +43,7 @@ class ChunkMap extends Component {
 
   render() {
     const { currentMap } = this.state;
-    const { data, updateCurrentNode, currentNode } = this.props;
-
-    console.log(currentNode);
+    const { data, updateCurrentKey, currentKey } = this.props;
 
     const title = (
       <>
@@ -87,9 +85,9 @@ class ChunkMap extends Component {
               <Tree
                 showLine
                 draggable
-                onSelect={v => updateCurrentNode(v)}
+                onSelect={v => updateCurrentKey(v)}
                 defaultExpandAll
-                selectedKeys={currentNode}
+                selectedKeys={currentKey}
               >
                 {getTreeNode(data)}
               </Tree>
@@ -111,13 +109,13 @@ class ChunkMap extends Component {
 
 const mapStateToProps = state => ({
   data: state.map.mapData,
-  currentNode: state.map.currentNode
+  currentKey: state.map.currentKey
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateCurrentNode(id) {
+  updateCurrentKey(id) {
     dispatch({
-      type: 'map/updateCurrentNode',
+      type: 'map/updateCurrentKey',
       payload: id
     });
   }
