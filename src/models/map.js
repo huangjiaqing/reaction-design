@@ -1,4 +1,5 @@
 import findId from 'utils/findTreeNodeById';
+import produce from 'immer';
 
 const mapData = [
   {
@@ -46,12 +47,11 @@ export default {
   state: {
     mapData,
     currentKey: [],
-    currentNode: null
+    currentNode: {}
   },
 
   reducers: {
     updateCurrentKey(state, { payload: currentKey }) {
-
       let res = findId(currentKey[0], state.mapData);
 
       return {
@@ -60,8 +60,39 @@ export default {
         currentNode: res.pop()
       };
     },
+    saveMapData(state, { payload: mapData }) {
+      return {
+        ...state,
+        mapData
+      };
+    }
   },
 
-  effects: {},
+  effects: {
+    *updateChunkName({ payload: { id, chunkName } }, { select, put }) {
+      const mapData = yield select(state => state.map.mapData);
+
+      yield put({
+        type: 'saveMapData',
+        payload: produce(mapData, (mapData) => {
+          let idxs = id.split('-');
+          let evalString = '';
+
+          idxs.forEach((idx, i) => {
+            if (i === 0) {
+              evalString += `mapData[${idx-1}]`;
+              return;
+            }
+
+            evalString += `.children[${idx-1}]`;
+          })
+
+          evalString += `.name = chunkName`;
+
+          eval(evalString);
+        })
+      });
+    }
+  },
 
 };

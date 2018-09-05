@@ -85,7 +85,11 @@ class ChunkMap extends Component {
               <Tree
                 showLine
                 draggable
-                onSelect={v => updateCurrentKey(v)}
+                onSelect={v => {
+                  if (v.length) {
+                    updateCurrentKey(v)
+                  }
+                }}
                 defaultExpandAll
                 selectedKeys={currentKey}
               >
