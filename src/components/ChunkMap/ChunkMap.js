@@ -14,7 +14,7 @@ const getTreeNode = (data) => {
   return (
     Array.isArray(data) && data.map(
       node => (
-        <TreeNode key={node.name} title={node.name} value={node.name}>
+        <TreeNode key={node.id} title={node.name} value={node.id}>
           {Array.isArray(node.children) && getTreeNode(node.children)}
         </TreeNode>
       )
@@ -43,7 +43,9 @@ class ChunkMap extends Component {
 
   render() {
     const { currentMap } = this.state;
-    const { data } = this.props;
+    const { data, updateCurrentNode, currentNode } = this.props;
+
+    console.log(currentNode);
 
     const title = (
       <>
@@ -60,19 +62,6 @@ class ChunkMap extends Component {
         <Option value="tom">游泳</Option>
       </Select>
       <Button type="dashed" style={{ marginLeft: 12 }}><Icon type="plus" /></Button>
-      </>
-    );
-
-    const TreeMap = () => (
-      <>
-      <Tree
-        showLine
-        draggable
-        // defaultExpandAll
-        onRightClick={e => { console.log('右击啦：', e) }}
-      >
-        {getTreeNode(data)}
-      </Tree>
       </>
     );
 
@@ -95,7 +84,15 @@ class ChunkMap extends Component {
         {currentMap === 'treeMap' && (
           <section className={styles.map}>
             <div className={styles.left}>
-              <TreeMap />
+              <Tree
+                showLine
+                draggable
+                onSelect={v => updateCurrentNode(v)}
+                defaultExpandAll
+                selectedKeys={currentNode}
+              >
+                {getTreeNode(data)}
+              </Tree>
             </div>
             <div className={styles.right}>
               <ChunkEditor />
@@ -113,7 +110,17 @@ class ChunkMap extends Component {
 };
 
 const mapStateToProps = state => ({
-  data: state.map.mapData
+  data: state.map.mapData,
+  currentNode: state.map.currentNode
 });
 
-export default connect(mapStateToProps)(ChunkMap);
+const mapDispatchToProps = dispatch => ({
+  updateCurrentNode(id) {
+    dispatch({
+      type: 'map/updateCurrentNode',
+      payload: id
+    });
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChunkMap);

@@ -33,7 +33,7 @@ const ChunkEditor = () => {
   return (
     <>
     <Card
-      title={<Icon type="edit" />}
+      title="编辑"
       bordered={false}
       className={styles.chunkMap}
     >
